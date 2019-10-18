@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="blog.video.biswas.retrofit">
 
+<!--This for Internet Permission
+You Have to All
+<uses-permission android:name="android.permission.INTERNET"/>
+android:usesCleartextTraffic="true">
 
+-->
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -12,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+
         android:usesCleartextTraffic="true">
 
         <activity android:name=".MainActivity">
