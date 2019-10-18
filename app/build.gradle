@@ -6,6 +6,7 @@ android {
     defaultConfig {
         applicationId "blog.video.biswas.retrofit"
         minSdkVersion 19
+        dataBinding.enabled = true
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"

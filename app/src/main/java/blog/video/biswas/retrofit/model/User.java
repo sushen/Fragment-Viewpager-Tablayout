@@ -1,6 +1,6 @@
 package blog.video.biswas.retrofit.model;
 
-class User {
+public class User {
     private String email;
     private String token;
 

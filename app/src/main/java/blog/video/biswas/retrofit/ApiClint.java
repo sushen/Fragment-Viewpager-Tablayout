@@ -1,10 +1,11 @@
-package blog.video.biswas.retrofit.model;
+package blog.video.biswas.retrofit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClint {
+
     static Retrofit getClint() {
 
         OkHttpClient client = new OkHttpClient.Builder().build();
