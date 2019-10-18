@@ -13,6 +13,5 @@ public class ApiClint {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
-
     }
 }
