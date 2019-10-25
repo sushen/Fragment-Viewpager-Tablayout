@@ -24,41 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
 
+        ViewpagerAdapter viewpagerAdapter = new ViewpagerAdapter(getSupportFragmentManager());
 
-        ApiClint.getClint().create(ApiService.class)
-                .login("demo","12345678")
-                .enqueue(new Callback<UserResponse>() {
-                    @Override
-                    public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                        UserResponse userResponse = response.body();
-                        Toast.makeText(MainActivity.this,userResponse.getMessage(),Toast.LENGTH_LONG).show();
-                        binding.tvEmail.setText(userResponse.getData().getEmail());
-                        getAllCategories(userResponse.getData().getToken());
+        viewpagerAdapter.addFragment(new FragmentLogin(),"Login");
+        viewpagerAdapter.addFragment(new FragmentSignup(),"SignUp");
 
-                    }
-
-                    @Override
-                    public void onFailure(Call<UserResponse> call, Throwable t) {
-                        Toast.makeText(MainActivity.this,t.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
-    }
-
-    public void getAllCategories(String token){
-        ApiClint.getClint()
-                .create(ApiService.class)
-                .getAllCagerories(token)
-                .enqueue(new Callback<CategoryResponse>() {
-                    @Override
-                    public void onResponse(Call<CategoryResponse> call, Response<CategoryResponse> response) {
-                        CategoryResponse categoryResponse = response.body();
-                        Toast.makeText(MainActivity.this,categoryResponse.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<CategoryResponse> call, Throwable t) {
-                        Toast.makeText(MainActivity.this,t.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
+        binding.vp.setAdapter(viewpagerAdapter);
+        binding.tabLayout.setupWithViewPager(binding.vp);
     }
 }
